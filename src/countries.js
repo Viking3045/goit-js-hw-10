@@ -16,7 +16,7 @@
         const img = document.createElement('img');
         img.classList.add('countries-img');
         img.src = `${name.flags.svg}`;
-        img.alt = `${name.name.official}`;
+        img.alt = name.name.official;
         div.append(img);
 
         const title = document.createElement('h2');
