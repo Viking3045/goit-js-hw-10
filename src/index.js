@@ -12,7 +12,7 @@ input.addEventListener('input',debounce(e => {
     e.preventDefault;
     const searchValue = input.value.trim();
     countriesContainer.innerHTML = "";
-    // if (!searchValue) return;
+    if (!searchValue) return;
     getrCountries(searchValue).then(data => {
      if (data.length === 1) {                
          renderCountry(data);    
