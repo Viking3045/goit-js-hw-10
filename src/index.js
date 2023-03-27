@@ -6,11 +6,13 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import 'notiflix/dist/notiflix-3.2.6.min.css';
 const DEBOUNCE_DELAY = 300;
 
-
+const countriesContainer = document.querySelector(`.country-list`);
 const input = document.querySelector('#search-box')
 input.addEventListener('input',debounce(e => {
     e.preventDefault;
-    const searchValue = input.value.trim(); 
+    const searchValue = input.value.trim();
+    countriesContainer.innerHTML = "";
+    if (!searchValue) return;
     getrCountries(searchValue).then(data => {
      if (data.length === 1) {                
          renderCountry(data);    
@@ -22,7 +24,7 @@ input.addEventListener('input',debounce(e => {
 
             if (data.length > 10) { 
                 Notify.info("Too many matches found. Please enter a more specific name.");
-            };
+        };
     }).catch(error =>Notify.failure(`Oops, there is no country with that name`));
 },DEBOUNCE_DELAY,{
       leading: false,
